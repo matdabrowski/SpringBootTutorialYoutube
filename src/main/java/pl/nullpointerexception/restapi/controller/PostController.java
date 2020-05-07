@@ -11,7 +11,6 @@ import pl.nullpointerexception.restapi.model.Post;
 import pl.nullpointerexception.restapi.service.PostService;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,9 +19,15 @@ public class PostController {
     private final PostService postService;
 
     @GetMapping("/posts")
-    public List<PostDto> getPosts(@RequestParam(required = false) int page) {
+    public List<PostDto> getPosts(@RequestParam(required = false) int page, Sort.Direction sort) {
         int pagetNumber = page >= 0 ? page : 0;
-        return PostDtoMapper.mapToPostDtos(postService.getPosts(pagetNumber));
+        return PostDtoMapper.mapToPostDtos(postService.getPosts(pagetNumber, sort));
+    }
+
+    @GetMapping("/posts/comments")
+    public List<Post> getPostsWithComment(@RequestParam(required = false) int page, Sort.Direction sort) {
+        int pagetNumber = page >= 0 ? page : 0;
+        return postService.getPostsWithComments(pagetNumber, sort);
     }
 
     @GetMapping("/posts/{id}")
