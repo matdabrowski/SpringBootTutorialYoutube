@@ -1,0 +1,21 @@
+<config xmlns ='http://www.ehcache.org/v3'
+        xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:jsr107 ="http://www.ehcache.org/v3/jsr107"
+        xsi:schemaLocation ="http://www.ehcache.org/v3
+https://www.ehcache.org/schema/ehcache-core-3.0.xsd">
+
+    <cache-template name="default">
+        <expiry>
+            <ttl unit="hours">1</ttl>
+        </expiry>
+        <heap unit="entries">1000</heap>
+    </cache-template>
+
+    <cache alias="PostsWithComments" uses-template="default"/>
+    <cache alias="SinglePost">
+        <expiry>
+            <ttl unit="hours">4</ttl>
+        </expiry>
+        <heap unit="entries">500</heap>
+    </cache>
+</config>
