@@ -28,6 +28,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-cache'
     implementation 'com.auth0:java-jwt:3.8.3'
+    implementation 'org.liquibase:liquibase-core'
 
     implementation 'org.ehcache:ehcache:3.8.1'
     implementation 'javax.cache:cache-api:1.1.1'
